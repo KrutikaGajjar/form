@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Lists from "./components/Lists"; 
+import Contects from "./components/Contects";
 import './App.css';
 import { Col, Container, Row } from 'react-bootstrap';
 
