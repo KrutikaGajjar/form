@@ -12,8 +12,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import InputGroup from "react-bootstrap/InputGroup";
 import SplitButton from "react-bootstrap/SplitButton";
 
-interface IListsProps {}
+interface IListsProps {} 
 const Lists: React.FC<IListsProps> = (props) => {
+  const [inputValue,setinputValue] = React.useState('')
   return (
     <Container>
       <Form>
@@ -40,7 +41,7 @@ const Lists: React.FC<IListsProps> = (props) => {
                   <Col>
                     <Form.Group controlId="formBasicFirstName">
                       <Form.Label>First Name*</Form.Label>
-                      <Form.Control type="text" />
+                      <Form.Control className="uplist" type="text" value={inputValue} onChange={(e)=> setinputValue(e.target.value)}/>
                     </Form.Group>
                   </Col>
                   <Col>
@@ -386,7 +387,7 @@ const Lists: React.FC<IListsProps> = (props) => {
 
             <Col className="che-btn">
               <br />
-              <Button variant="success" type="submit">
+              <Button variant="success" type="submit" onSubmit={() => handleOnSubmit()}>
                 Submit
               </Button>
               <Button variant="primary" type="submit">
