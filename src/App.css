@@ -28,16 +28,26 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.che-btn{
+.che-btn {
   float: right;
 }
 
+.list {
+  display: flex;
+  flex-direction: column;
+  background: #d18686;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.uplist {
+  align-items: center;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding: 3px 10px;
+}

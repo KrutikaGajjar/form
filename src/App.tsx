@@ -1,20 +1,41 @@
-import React, {useState} from 'react';
-import Lists from "./components/Lists"; 
-import Contects from "./components/Contects";
-import './App.css';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import Lists from "./components/Lists";
+import "./App.css";
+import { Col, Container, Row } from "react-bootstrap";
+import Loader from "./components/Loader";
+import Uplist from "./components/Uplist";
 
 function App() {
+  const [list, setList] = useState([]);
+  const [error, setError] = useState({});
+
+  interface Uplist {
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    phoneNo: number;
+  }
+  useEffect(() => {
+    fetch("http://localhost:3000/api/person")
+      .then((Response) => Response.json())
+      .then((res) => setList(res))
+      .catch((err) => setError(err));
+  }, []);
   return (
-    <>
-     <Container className="mt-3">
-       <Row>
+    <div className="App">
+      {list.length > 0 ? (
+        list.map((uplist: Uplist) => <Uplist uplist={uplist} />)
+      ) : (
+        <Loader />
+      )}
+      <Container className="mt-3">
+        <Row>
           <Col>
-          <Lists/>
+            <Lists />
           </Col>
-       </Row>
-     </Container>
-    </>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

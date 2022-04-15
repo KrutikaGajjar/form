@@ -26,8 +26,7 @@ const Lists: React.FC<IListsProps> = (props) => {
             {/* personal information card ends*/}
             <hr />
             {/* personal Identification card start*/}
-            <Form.Label>
-              Person Identification</Form.Label>
+            <Form.Label>Person Identification</Form.Label>
             {/* personal Identification card ends*/}
             <Card>
               <Card.Body>
@@ -354,7 +353,11 @@ const Lists: React.FC<IListsProps> = (props) => {
                       <Col lg={4}>
                         <Form.Label>Country*</Form.Label>
 
-                        <InputGroup className="drop-down" id="dropdown-basic-button" title="Work">
+                        <InputGroup
+                          className="drop-down"
+                          id="dropdown-basic-button"
+                          title="Work"
+                        >
                           <SplitButton
                             variant="outline-secondary"
                             title="Work"
