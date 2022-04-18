@@ -12,12 +12,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import InputGroup from "react-bootstrap/InputGroup";
 import SplitButton from "react-bootstrap/SplitButton";
 
-interface IListsProps {} 
-const Lists: React.FC<IListsProps> = (props) => {
-  const [inputValue,setinputValue] = React.useState('')
+interface IListsProps {
+  handleOnSubmit: (value: string) => void;
+}
+const Lists: React.FC<IListsProps> = ({ handleOnSubmit }) => {
+  const [inputValue, setinputValue] = React.useState("");
+
   return (
     <Container>
-      <Form>
+      <Form onSubmit={() => handleOnSubmit(inputValue)}>
         <Card>
           <Card.Body>
             {/* personal information card start*/}
@@ -41,19 +44,25 @@ const Lists: React.FC<IListsProps> = (props) => {
                   <Col>
                     <Form.Group controlId="formBasicFirstName">
                       <Form.Label>First Name*</Form.Label>
-                      <Form.Control className="uplist" type="text" value={inputValue} onChange={(e)=> setinputValue(e.target.value)}/>
+                      <Form.Control
+                        className="uplist"
+                        id="fn"
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => setinputValue(e.target.value)}
+                      />
                     </Form.Group>
                   </Col>
                   <Col>
                     <Form.Group controlId="formBasicMiddleName">
                       <Form.Label>Middle Name</Form.Label>
-                      <Form.Control type="text" />
+                      <Form.Control />
                     </Form.Group>
                   </Col>
                   <Col>
                     <Form.Group controlId="formBasicLastName">
                       <Form.Label>Last Name</Form.Label>
-                      <Form.Control type="text" />
+                      <Form.Control />
                     </Form.Group>
                   </Col>
                 </Row>
@@ -65,7 +74,7 @@ const Lists: React.FC<IListsProps> = (props) => {
                     </Form.Group>
                   </Col>
                   <Col>
-                    <Form.Group controlId="dob">
+                    <Form.Group controlId="formBasicDOB">
                       <Form.Label>Date of Birth*</Form.Label>
                       <Form.Control
                         type="date"
@@ -117,7 +126,7 @@ const Lists: React.FC<IListsProps> = (props) => {
                       <Col lg={4}>
                         <Form.Group controlId="formBasicPhoneNumber">
                           <Form.Label>Phone Number*</Form.Label>
-                          <Form.Control type="number" />
+                          <Form.Control />
                         </Form.Group>
                       </Col>
                       <Col>
@@ -160,7 +169,7 @@ const Lists: React.FC<IListsProps> = (props) => {
                       <Col lg={4}>
                         <Form.Group controlId="formBasicPhoneNumber">
                           <Form.Label>Email Address*</Form.Label>
-                          <Form.Control type="number" />
+                          <Form.Control />
                         </Form.Group>
                       </Col>
                       <Col>
@@ -387,7 +396,7 @@ const Lists: React.FC<IListsProps> = (props) => {
 
             <Col className="che-btn">
               <br />
-              <Button variant="success" type="submit" onSubmit={() => handleOnSubmit()}>
+              <Button variant="success" type="submit">
                 Submit
               </Button>
               <Button variant="primary" type="submit">

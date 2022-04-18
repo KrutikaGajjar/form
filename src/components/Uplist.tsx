@@ -11,11 +11,12 @@ const uplist: React.FC<Props> = ({ uplist }) => {
       <tr>
         <td> {uplist.firstName}</td>
       </tr>
-      <tr>
-      <td>{uplist.middleName}</td>
-      </tr>
+      
+      {/* <td>{uplist.middleName}</td>
+      
       <td>{uplist.lastName}</td>
       <td> {uplist.phoneNo}</td>
+      <td>{uplist.email}</td> */}
     </div>
   );
 };

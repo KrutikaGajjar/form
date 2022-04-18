@@ -4,17 +4,17 @@ import "./App.css";
 import { Col, Container, Row } from "react-bootstrap";
 import Loader from "./components/Loader";
 import Uplist from "./components/Uplist";
-
 function App() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<Uplist[]>([]);
   const [error, setError] = useState({});
 
   interface Uplist {
     firstName: string;
-    middleName: string;
-    lastName: string;
-    phoneNo: number;
   }
+
+  const handleOnSubmit = (value: string) => {
+    setList([...list, { firstName: value }]);
+  };
   useEffect(() => {
     fetch("http://localhost:3000/api/person")
       .then((Response) => Response.json())
@@ -28,10 +28,11 @@ function App() {
       ) : (
         <Loader />
       )}
+
       <Container className="mt-3">
         <Row>
           <Col>
-            <Lists />
+            <Lists handleOnSubmit={handleOnSubmit} />
           </Col>
         </Row>
       </Container>
